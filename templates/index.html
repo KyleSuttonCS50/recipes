@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Recipes
+{% endblock %}
+
+{% block main %}
+    <p>
+        Here's what you can make!
+    </p>
+    <p>
+        {% for recipe in recipeinfo %}
+            <p id="listitem">
+                <div><a href="javascript:window.open(URL({{recipe[0]}}), '_blank');">{{recipe[1]}}</a></div>
+                <div>Percentage of required ingredients: {{recipe[2]}}</div>
+            </p>
+        {% endfor %}
+        <script>
+            function URL(recipeid){
+                let url = "/recipe?recipeid=" + recipeid.toString()
+                return url
+            }
+        </script>
+    </p>
+{% endblock %}

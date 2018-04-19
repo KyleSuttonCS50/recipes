@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{recipe["recipename"]}}
+{% endblock %}
+
+{% block main %}
+    <h1>
+        {{recipe["recipename"]}}
+    </h1>
+    <p>By {{recipe["author"]}}</p>
+    {% if recipe["description"] %}
+        <p>{{recipe["description"]}}</p>
+    {% endif %}
+    <p>
+        {% if recipe["serves"] %}
+            {{recipe["serves"]}}
+        {% endif %}
+    </p>
+    <p>
+        <h2>Ingredients</h2>
+        {% for ingredient in recipe["ingredients"] %}
+            <li>{{ingredient}}</li>
+        {% endfor %}
+    </p>
+    <p>
+        <h2>Method</h2>
+        {% for step in recipe["steps"] %}
+            <p>{{step}}</p>
+        {% endfor %}
+    </p>
+    <p>
+        View full recipe <a href="{{recipe["link"]}}" target="_blank">here.</a>
+    </p>
+{% endblock %}

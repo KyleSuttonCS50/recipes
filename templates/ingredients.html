@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ingredients
+{% endblock %}
+
+{% block main %}
+    <p>Input the ingredients you have on hand, then press "Find Recipes!"</p>
+    <form action="/" method="post">
+        <div id="fields" class="form-group">
+            <button type="button" class="btn btn-primary" onclick="add_ingredient()">Add an Ingredient</button>
+            <p></p>
+            <script>
+                let k = 1;
+                function add_ingredient() {
+                    let form = document.getElementById("fields");
+                    let ing = document.createElement("p");
+                    ing.innerHTML = '<p><input class=primary autocomplete="off" name="ingredient_' + k.toString() + '" placeholder="Ingredient" type="text"/></p>';
+                    form.appendChild(ing);
+                    k += 1;
+                }
+            </script>
+
+        </div>
+        <button class="btn btn-primary" type="submit">Find Recipes!</button>
+    </form>
+{% endblock %}
